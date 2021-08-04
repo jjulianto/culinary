@@ -1,20 +1,19 @@
 <template>
   <Navbar />
-  <div class="container">
-    <Hero />
-  </div>
+  <h1>Foods List</h1>
 </template>
 
 <script>
 // @ is an alias to /src
 import Navbar from "@/components/Navbar.vue";
-import Hero from "@/components/Hero.vue";
 
 export default {
-  name: "Home",
+  name: "Foods",
   components: {
     Navbar,
-    Hero,
   },
 };
 </script>
+
+<style>
+</style>
