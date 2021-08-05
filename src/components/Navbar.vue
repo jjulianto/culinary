@@ -28,7 +28,7 @@
             <router-link class="nav-link" to="/cart">
               Cart
               <i class="fas fa-shopping-cart"></i>
-              <span class="badge bg-success ms-2">0</span>
+              <span class="badge bg-success ms-2" id="cartCount">0</span>
             </router-link>
           </li>
         </ul>
@@ -43,5 +43,18 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.badge {
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 100%;
+}
+
+#cartCount {
+  font-size: 8px;
+  color: #fff;
+  position: relative;
+  vertical-align: top;
+  left: -15px; 
+}
 </style>

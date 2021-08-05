@@ -1,6 +1,9 @@
 <template>
   <div class="row mt-4">
-    <div class="col">
+    <div class="col-md-6 order-md-2">
+      <img src="../assets/images/ilustrasi.png" class="w-100" alt="hero" />
+    </div>
+    <div class="col-md-6 order-md-1 mt-4">
       <div class="d-flex h-100">
         <div class="justify-content-center align-self-center">
           <h2>
@@ -8,14 +11,9 @@
             in Your Gadget
           </h2>
           <p>Let's choose and order your favorite food!</p>
-          <button class="btn btn-lg btn-success">
-            Pesan <i class="fas fa-arrow-circle-right"></i>
-          </button>
+          <button class="btn btn-lg btn-success">Pesan</button>
         </div>
       </div>
-    </div>
-    <div class="col">
-      <img src="../assets/images/ilustrasi.png" width="600" alt="hero" />
     </div>
   </div>
 </template>
