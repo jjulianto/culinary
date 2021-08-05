@@ -11,7 +11,9 @@
             in Your Gadget
           </h2>
           <p>Let's choose and order your favorite food!</p>
-          <button class="btn btn-lg btn-success">Pesan</button>
+          <router-link to="/foods" class="btn btn-lg btn-success">
+            Pesan
+          </router-link>
         </div>
       </div>
     </div>

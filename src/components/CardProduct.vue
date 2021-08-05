@@ -1,8 +1,9 @@
 <template>
-  <div class="card shadow card-product">
+  <div class="card shadow">
     <img
       :src="require(`../assets/images/${product.gambar}`)"
       class="card-img-top"
+      style="object-fit: cover; height: 13em"
       alt="Foods thumbnail"
     />
     <div class="card-body">

@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <a class="navbar-brand" href="#">Culinary</a>
+      <a class="navbar-brand mb-1" href="#">Culinary</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -55,6 +55,6 @@ export default {
   color: #fff;
   position: relative;
   vertical-align: top;
-  left: -15px; 
+  left: -15px;
 }
 </style>
