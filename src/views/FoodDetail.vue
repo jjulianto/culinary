@@ -101,11 +101,8 @@ export default {
               icon: "success",
               title: "Success",
               text: "Order Successful.",
-            }).then(() => {
-              location.reload();
             });
-            this.pesan.jumlah_pemesanan = "";
-            this.pesan.keterangan = "";
+            this.$router.push({ path: "/cart" });
           })
           .catch((error) => {
             console.log("Error: ", error);
@@ -114,7 +111,7 @@ export default {
         Swal.fire({
           icon: "error",
           title: "Error",
-          text: "Order Quantity and Description Must be Filled!",
+          text: "Order Quantity Must be Filled!",
         });
       }
     },

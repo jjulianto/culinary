@@ -31,10 +31,18 @@
               Cart
               <i class="fas fa-shopping-cart"></i>
               <span
-                v-show="jumlah_pesanans.length > 0"
+                v-show="
+                  updateKeranjang
+                    ? updateKeranjang.length > 0
+                    : jumlah_pesanans.length > 0
+                "
                 class="badge bg-success ms-2"
                 id="cartCount"
-                >{{ jumlah_pesanans.length }}</span
+                >{{
+                  updateKeranjang
+                    ? updateKeranjang.length
+                    : jumlah_pesanans.length
+                }}</span
               >
             </router-link>
           </li>
@@ -54,6 +62,7 @@ export default {
       jumlah_pesanans: [],
     };
   },
+  props: ["updateKeranjang"],
   methods: {
     setJumlah(data) {
       this.jumlah_pesanans = data;
