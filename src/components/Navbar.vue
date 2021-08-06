@@ -30,7 +30,12 @@
             <router-link class="nav-link text-dark" to="/cart">
               Cart
               <i class="fas fa-shopping-cart"></i>
-              <span class="badge bg-success ms-2" id="cartCount">0</span>
+              <span
+                v-show="jumlah_pesanans.length > 0"
+                class="badge bg-success ms-2"
+                id="cartCount"
+                >{{ jumlah_pesanans.length }}</span
+              >
             </router-link>
           </li>
         </ul>
@@ -40,8 +45,30 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "Navbar",
+  data() {
+    return {
+      jumlah_pesanans: [],
+    };
+  },
+  methods: {
+    setJumlah(data) {
+      this.jumlah_pesanans = data;
+    },
+  },
+  mounted() {
+    axios
+      .get("http://localhost:3000/keranjangs")
+      .then((response) => {
+        this.setJumlah(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
 };
 </script>
 

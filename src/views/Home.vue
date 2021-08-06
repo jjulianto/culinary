@@ -46,7 +46,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://localhost:3000/best-products")
+      .get("http://localhost:3000/products?_limit=3")
       .then((response) => {
         this.setProducts(response.data);
       })

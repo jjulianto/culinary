@@ -42,14 +42,19 @@
         <h4>
           Harga: <strong>Rp. {{ product.harga }}</strong>
         </h4>
-        <form action="">
+        <form v-on:submit.prevent>
           <div class="form-group mb-3 mt-3">
             <label for="order-quantity">Order Quantity</label>
-            <input type="number" class="form-control" />
+            <input
+              type="number"
+              class="form-control"
+              v-model="pesan.jumlah_pemesanan"
+            />
           </div>
           <div class="form-group mb-3">
             <label for="description">Description</label>
             <textarea
+              v-model="pesan.keterangan"
               name=""
               id=""
               class="form-control"
@@ -57,7 +62,7 @@
               placeholder="Keterangan seperti : Pedas, Nasi Setengah"
             ></textarea>
           </div>
-          <button class="btn btn-success" type="submit">
+          <button class="btn btn-success" type="submit" @click="pemesanan">
             <i class="fas fa-shopping-cart"></i> Pesan
           </button>
         </form>
@@ -69,6 +74,7 @@
 <script>
 import Navbar from "@/components/Navbar.vue";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 export default {
   name: "FoodDetail",
@@ -77,12 +83,40 @@ export default {
   },
   data() {
     return {
-      product: [],
+      product: {},
+      pesan: {},
     };
   },
   methods: {
     setProduct(data) {
       this.product = data;
+    },
+    pemesanan() {
+      if (this.pesan.jumlah_pemesanan) {
+        this.pesan.products = this.product;
+        axios
+          .post("http://localhost:3000/keranjangs", this.pesan)
+          .then(() => {
+            Swal.fire({
+              icon: "success",
+              title: "Success",
+              text: "Order Successful.",
+            }).then(() => {
+              location.reload();
+            });
+            this.pesan.jumlah_pemesanan = "";
+            this.pesan.keterangan = "";
+          })
+          .catch((error) => {
+            console.log("Error: ", error);
+          });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Order Quantity and Description Must be Filled!",
+        });
+      }
     },
   },
   mounted() {
