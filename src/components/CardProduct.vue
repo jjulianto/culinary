@@ -1,7 +1,7 @@
 <template>
   <div class="card shadow">
     <img
-      :src="require(`../assets/images/${product.gambar}`)"
+      :src="'assets/images/' + product.gambar"
       class="card-img-top"
       style="object-fit: cover; height: 13em"
       alt="Foods thumbnail"
@@ -9,9 +9,9 @@
     <div class="card-body">
       <h5 class="card-title">{{ product.nama }}</h5>
       <p class="card-text">Harga: Rp. {{ product.harga }}</p>
-      <a href="#" class="btn btn-success">
+      <router-link :to="`/foods/${product.id}`" class="btn btn-success">
         <i class="fas fa-shopping-cart"></i> Pesan
-      </a>
+      </router-link>
     </div>
   </div>
 </template>
