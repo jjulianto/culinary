@@ -59,11 +59,11 @@
               id=""
               class="form-control"
               rows="5"
-              placeholder="Keterangan seperti : Pedas, Nasi Setengah"
+              placeholder="Pedas, Nasi Setengah"
             ></textarea>
           </div>
           <button class="btn btn-success" type="submit" @click="pemesanan">
-            <i class="fas fa-shopping-cart"></i> Pesan
+            <i class="fas fa-shopping-cart"></i> Order
           </button>
         </form>
       </div>
@@ -96,12 +96,7 @@ export default {
         this.pesan.products = this.product;
         axios
           .post("http://localhost:3000/keranjangs", this.pesan)
-          .then(() => {
-            Swal.fire({
-              icon: "success",
-              title: "Success",
-              text: "Order Successful.",
-            });
+          .then(() => {            
             this.$router.push({ path: "/cart" });
           })
           .catch((error) => {

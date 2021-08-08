@@ -8,9 +8,9 @@
     />
     <div class="card-body">
       <h5 class="card-title">{{ product.nama }}</h5>
-      <p class="card-text">Harga: Rp. {{ product.harga }}</p>
+      <p class="card-text">Price: Rp. {{ product.harga }}</p>
       <router-link :to="`/foods/${product.id}`" class="btn btn-success">
-        <i class="fas fa-shopping-cart"></i> Pesan
+        <i class="fas fa-shopping-cart"></i> Order
       </router-link>
     </div>
   </div>

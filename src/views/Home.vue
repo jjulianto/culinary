@@ -8,7 +8,7 @@
       </div>
       <div class="col d-flex justify-content-end align-items-center">
         <router-link to="/foods" class="btn btn-success">
-          <i class="fas fa-eye"></i> Lihat Semua
+          <i class="fas fa-eye"></i> See More
         </router-link>
       </div>
     </div>

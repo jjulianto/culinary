@@ -73,7 +73,7 @@
               </tr>
               <tr>
                 <td colspan="6" align="right">
-                  <strong>Total Harga :</strong>
+                  <strong>Total Price :</strong>
                 </td>
                 <td align="right">
                   <strong>Rp. {{ totalHarga }}</strong>
@@ -83,6 +83,29 @@
             </tbody>
           </table>
         </div>
+      </div>
+    </div>
+    <div class="row justify-content-end mb-5">
+      <div class="col-md-4">
+        <form v-on:submit.prevent>
+          <div class="form-group mb-3 mt-3">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" v-model="pesan.nama" />
+          </div>
+          <div class="form-group mb-3">
+            <label for="noTable">No Table:</label>
+            <input type="number" class="form-control" v-model="pesan.noMeja" />
+          </div>
+          <div class="d-flex justify-content-end">
+            <button
+              class="btn btn-success float-right"
+              type="submit"
+              @click="checkout"
+            >
+              <i class="fas fa-shopping-cart"></i> Order
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -101,6 +124,7 @@ export default {
   data() {
     return {
       keranjangs: [],
+      pesan: {},
     };
   },
   methods: {
@@ -108,26 +132,65 @@ export default {
       this.keranjangs = data;
     },
     hapusKeranjang(id) {
-      axios
-        .delete(`http://localhost:3000/keranjangs/${id}`)
-        .then(() => {
-          Swal.fire({
-            icon: "error",
-            title: "Error",
-            text: "Successfully Delete Order.",
-          });
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#198754",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
           axios
-            .get(`http://localhost:3000/keranjangs`)
-            .then((response) => {
-              this.setKeranjangs(response.data);
+            .delete(`http://localhost:3000/keranjangs/${id}`)
+            .then(() => {
+              Swal.fire("Deleted!", "Your cart has been deleted.", "success");
+              axios
+                .get(`http://localhost:3000/keranjangs`)
+                .then((response) => {
+                  this.setKeranjangs(response.data);
+                })
+                .catch((error) => {
+                  console.log("Error: ", error);
+                });
             })
             .catch((error) => {
               console.log("Error: ", error);
             });
-        })
-        .catch((error) => {
-          console.log("Error: ", error);
+        }
+      });
+    },
+    checkout() {
+      if (this.pesan.nama && this.pesan.noMeja) {
+        this.pesan.keranjangs = this.keranjangs;
+        axios
+          .post("http://localhost:3000/pesanans", this.pesan)
+          .then(() => {
+            this.keranjangs.map(function (item) {
+              return axios
+                .delete(`http://localhost:3000/keranjangs/${item.id}`)
+                .catch((error) => {
+                  console.log(error);
+                });
+            });
+            this.$router.push({ path: "/successful-order" });
+            Swal.fire({
+              title: "Success",
+              text: "Order successfully.",
+              icon: "success",
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Name and No Table Must be Filled!",
         });
+      }
     },
   },
   mounted() {

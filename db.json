@@ -73,52 +73,14 @@
       "gambar": "lontong-opor-ayam.jpg"
     }
   ],
-  "keranjangs": [
-    {
-      "jumlah_pemesanan": "1",
-      "products": {
-        "id": 3,
-        "kode": "K-03",
-        "nama": "Nasi Rames",
-        "harga": 12000,
-        "is_ready": true,
-        "gambar": "nasi-rames.jpg"
-      },
-      "id": 1
-    },
-    {
-      "jumlah_pemesanan": "1",
-      "products": {
-        "id": 1,
-        "kode": "K-01",
-        "nama": "Sate Ayam",
-        "harga": 16000,
-        "is_ready": true,
-        "gambar": "sate-ayam.jpg"
-      },
-      "id": 2
-    },
-    {
-      "jumlah_pemesanan": "1",
-      "products": {
-        "id": 2,
-        "kode": "K-02",
-        "nama": "Nasi Goreng Telur",
-        "harga": 14000,
-        "is_ready": true,
-        "gambar": "nasi-goreng-telor.jpg"
-      },
-      "id": 3
-    }
-  ],
+  "keranjangs": [],
   "pesanans": [
     {
-      "nama": "Afif",
-      "noMeja": "3",
+      "nama": "Ijul",
+      "noMeja": "4",
       "keranjangs": [
         {
-          "jumlah_pemesanan": "1",
-          "keterangan": "Pedes",
+          "jumlah_pemesanan": "2",
           "products": {
             "id": 1,
             "kode": "K-01",

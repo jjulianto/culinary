@@ -12,7 +12,7 @@
           </h2>
           <p>Let's choose and order your favorite food!</p>
           <router-link to="/foods" class="btn btn-lg btn-success">
-            Pesan
+            Order
           </router-link>
         </div>
       </div>
