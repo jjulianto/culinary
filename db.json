@@ -105,6 +105,25 @@
         }
       ],
       "id": 1
+    },
+    {
+      "nama": "Bule",
+      "noMeja": "2",
+      "keranjangs": [
+        {
+          "jumlah_pemesanan": "1",
+          "products": {
+            "id": 3,
+            "kode": "K-03",
+            "nama": "Nasi Rames",
+            "harga": 12000,
+            "is_ready": true,
+            "gambar": "nasi-rames.jpg"
+          },
+          "id": 1
+        }
+      ],
+      "id": 2
     }
   ]
 }
