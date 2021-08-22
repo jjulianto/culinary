@@ -54,7 +54,7 @@ export default {
     },
     searchFood() {
       axios
-        .get(`http://localhost:3000/products?q=${this.search}`)
+        .get(`https://myculinary.herokuapp.com/api/products?q=${this.search}`)
         .then((response) => {
           this.setProducts(response.data);
         })
@@ -65,7 +65,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://localhost:3000/products")
+      .get("https://myculinary.herokuapp.com/api/products")
       .then((response) => {
         this.setProducts(response.data);
       })

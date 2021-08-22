@@ -143,11 +143,11 @@ export default {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .delete(`http://localhost:3000/keranjangs/${id}`)
+            .delete(`https://myculinary.herokuapp.com/api/keranjangs/${id}`)
             .then(() => {
               Swal.fire("Deleted!", "Your cart has been deleted.", "success");
               axios
-                .get(`http://localhost:3000/keranjangs`)
+                .get(`https://myculinary.herokuapp.com/keranjangs`)
                 .then((response) => {
                   this.setKeranjangs(response.data);
                 })
@@ -165,11 +165,11 @@ export default {
       if (this.pesan.nama && this.pesan.noMeja) {
         this.pesan.keranjangs = this.keranjangs;
         axios
-          .post("http://localhost:3000/pesanans", this.pesan)
+          .post("https://myculinary.herokuapp.com/api/pesanans", this.pesan)
           .then(() => {
             this.keranjangs.map(function (item) {
               return axios
-                .delete(`http://localhost:3000/keranjangs/${item.id}`)
+                .delete(`https://myculinary.herokuapp.com/keranjangs/${item.id}`)
                 .catch((error) => {
                   console.log(error);
                 });
@@ -195,7 +195,7 @@ export default {
   },
   mounted() {
     axios
-      .get(`http://localhost:3000/keranjangs`)
+      .get(`https://myculinary.herokuapp.com/api/keranjangs`)
       .then((response) => {
         this.setKeranjangs(response.data);
       })

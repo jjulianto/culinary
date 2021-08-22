@@ -70,7 +70,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://localhost:3000/keranjangs")
+      .get("https://myculinary.herokuapp.com/api/keranjangs")
       .then((response) => {
         this.setJumlah(response.data);
       })
